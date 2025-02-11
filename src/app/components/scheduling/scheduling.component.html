@@ -1,0 +1,91 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">Smart Home</a>
+
+    <!-- Mobile Toggle Button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav flex-column flex-lg-row ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/device-list" routerLinkActive="active">Devices</a>
+        </li>
+       
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/logs" routerLinkActive="active">Logs</a>
+        </li>
+
+        <!-- Authentication Links -->
+        <li class="nav-item">
+          <a class="nav-link btn btn-danger text-white" routerLink="/login">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="scheduling-container">
+    <h1>Device Scheduling</h1>
+  
+    <div class="schedule-form">
+      <label for="device">Select Device:</label>
+      <select id="device" [(ngModel)]="newSchedule.deviceName">
+        <option *ngFor="let device of devices" [value]="device">{{ device }}</option>
+      </select>
+  
+      <label for="time">Set Time:</label>
+      <input id="time" type="time" [(ngModel)]="newSchedule.time">
+  
+      <label for="action">Action:</label>
+      <select id="action" [(ngModel)]="newSchedule.action">
+        <option value="ON">Turn ON</option>
+        <option value="OFF">Turn OFF</option>
+      </select>
+  
+      <label for="repeat">Repeat:</label>
+      <select id="repeat" [(ngModel)]="newSchedule.repeat">
+        <option value="Once">Once</option>
+        <option value="Daily">Daily</option>
+        <option value="Weekly">Weekly</option>
+      </select>
+  
+      <button (click)="addSchedule()">Add Schedule</button>
+    </div>
+  
+    <div class="schedule-list" *ngIf="schedules.length > 0">
+      <h2>Scheduled Actions</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Device</th>
+            <th>Time</th>
+            <th>Action</th>
+            <th>Repeat</th>
+            <th>Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let schedule of schedules">
+            <td>{{ schedule.deviceName }}</td>
+            <td>{{ schedule.time }}</td>
+            <td [class.online]="schedule.action === 'ON'" [class.offline]="schedule.action === 'OFF'">
+              {{ schedule.action }}
+            </td>
+            <td>{{ schedule.repeat }}</td>
+            <td>
+              <button class="delete-btn" (click)="deleteSchedule(schedule.id)">X</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

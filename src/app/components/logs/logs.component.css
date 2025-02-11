@@ -1,0 +1,84 @@
+.logs-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background: linear-gradient(90deg, #ffe0e9, #ffb6c1);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .clear-btn {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 15px;
+    font-size: 16px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .clear-btn:hover {
+    background: #c82333;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background: #007bff;
+    color: white;
+  }
+  
+  .online {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .offline {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .success {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .failed {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .pending {
+    color: orange;
+    font-weight: bold;
+  }
+  
+  .no-logs {
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+    margin-top: 20px;
+  }
+  

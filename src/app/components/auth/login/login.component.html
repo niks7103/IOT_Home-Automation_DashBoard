@@ -1,0 +1,19 @@
+<section class="login-container">
+<div class="auth-container">  
+  <h2>Login</h2>  
+
+  <form (ngSubmit)="login($event)">  
+    <label>Email</label>  
+    <input type="email" [(ngModel)]="email" name="email" required placeholder="Enter email">  
+
+    <label>Password</label>  
+    <input type="password" [(ngModel)]="password" name="password" required placeholder="Enter password">  
+
+    <button type="submit">Login</button>  
+
+    <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>  
+
+    <p>Don't have an account? <a routerLink="/register">Register</a></p>  
+  </form>  
+</div>
+</section>

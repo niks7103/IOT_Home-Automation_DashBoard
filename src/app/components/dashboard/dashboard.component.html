@@ -1,0 +1,119 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">Smart Home</a>
+
+    <!-- Mobile Toggle Button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav flex-column flex-lg-row ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/device-list" routerLinkActive="active">Devices</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/scheduling" routerLinkActive="active">Scheduling</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/logs" routerLinkActive="active">Logs</a>
+        </li>
+
+        <!-- Authentication Links -->
+        <li class="nav-item">
+          <a class="nav-link btn btn-danger text-white" routerLink="/login">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Dashboard Page -->
+<div class="dash-board">
+  <div class="dashboard-container">
+    <h1 class="dashboard-title">Smart Home Automation Dashboard</h1>
+
+    <!-- Summary Section -->
+    <div class="summary-section">
+      <div class="summary-card">
+        <h3>Total Devices</h3>
+        <p>{{ totalDevices }}</p>
+      </div>
+      <div class="summary-card">
+        <h3>Active Devices</h3>
+        <p>{{ activeDevices }}</p>
+      </div>
+      <div class="summary-card">
+        <h3>Energy Consumption</h3>
+        <p>{{ energyConsumption }} kWh</p>
+      </div>
+      <div class="summary-card">
+        <h3>Temperature</h3>
+        <p>{{ temperature }}°C</p>
+      </div>
+    </div>
+
+    <!-- Device Control Section -->
+    <div class="device-grid">
+      <div class="device-card" *ngFor="let device of devices">
+        <h3>{{ device.name }}</h3>
+        <p>Status: 
+          <span [class.online]="device.status === 'ON'" [class.offline]="device.status === 'OFF'">
+            {{ device.status }}
+          </span>
+        </p>
+        <p>Energy Usage: {{ device.energy }} W</p>
+        <p>Room: {{ device.room }}</p>
+        <button (click)="toggleDevice(device)">
+          {{ device.status === 'ON' ? 'Turn OFF' : 'Turn ON' }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Security & Control Section -->
+    <div class="control-section">
+      <h2>Security & Control</h2>
+      <button (click)="toggleAllDevices()">Toggle All Devices</button>
+      <button (click)="lockDoors()">Lock All Doors</button>
+      <button class="temp" (click)="adjustTemperature()">Adjust Temperature</button>
+    </div>
+
+    <!-- Live Monitoring Section -->
+    <div class="monitoring-section">
+      <h2>Live Monitoring</h2>
+      <div class="camera-controls">
+        <label for="cameraSelect">Select Camera:</label>
+        <select id="cameraSelect" (change)="switchCamera($event)">
+          <option *ngFor="let cam of cameraList" [value]="cam.url">{{ cam.name }}</option>
+        </select>
+      </div>
+      <div class="camera-feed">
+        <img [src]="currentCameraUrl" alt="Live Camera Feed">
+      </div>
+      <div class="camera-actions">
+        <button (click)="captureSnapshot()">Capture Snapshot</button>
+        <button (click)="toggleRecording()">
+          {{ isRecording ? 'Stop Recording' : 'Start Recording' }}
+        </button>
+        <button (click)="toggleNightMode()">Night Mode</button>
+      </div>
+      <div class="logs">
+        <h3>Activity Logs</h3>
+        <ul>
+          <li *ngFor="let log of activityLogs">{{ log }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Button -->
+  <button class="device-list-button" routerLink="/device-list">
+    Go to Device List
+  </button>
+</div>

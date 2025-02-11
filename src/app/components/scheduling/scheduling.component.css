@@ -1,0 +1,113 @@
+.scheduling-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background:linear-gradient(90deg, #f5f5dc, #d2b48c);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+  }
+  
+  h1, h2 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .schedule-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .schedule-form label {
+    font-size: 14px;
+    font-weight: bold;
+    width: 100%;
+  }
+  
+  .schedule-form select,
+  .schedule-form input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  .schedule-form button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .schedule-form button:hover {
+    background: #0056b3;
+  }
+  
+  /* Schedule List */
+  .schedule-list {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background: #007bff;
+    color: white;
+  }
+  
+  .online {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .offline {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .delete-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+  }
+  
+  .delete-btn:hover {
+    background: #c82333;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .schedule-form {
+      flex-direction: column;
+    }
+  }
+  

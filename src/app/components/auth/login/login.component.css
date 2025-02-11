@@ -1,0 +1,111 @@
+/* Center the form */
+.auth-container {
+    max-width: 400px;
+    margin: 50px auto;
+    width: 60%;
+    padding: 30px;
+    background: linear-gradient(135deg, #007bff, #00d4ff);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    animation: fadeIn 0.8s ease-in-out;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  /* Form styling */
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-top: 10px;
+    font-size: 16px;
+    text-align: left;
+  }
+  
+  input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  input:focus {
+    background: #f1f1f1;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+  
+  button {
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: 0.3s ease-in-out;
+  }
+  
+  button:hover {
+    background: #ff4757;
+    box-shadow: 0 0 10px rgba(255, 71, 87, 0.6);
+  }
+  
+  /* Error message */
+  .error {
+    color: yellow;
+    font-size: 14px;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  /* Link styling */
+  p {
+    margin-top: 15px;
+  }
+  
+  a {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Fade-in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .login-container{
+    background:linear-gradient(90deg, #12c2e9, #c471ed, #f64f59);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+  }

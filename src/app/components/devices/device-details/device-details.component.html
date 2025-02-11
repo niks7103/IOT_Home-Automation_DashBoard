@@ -1,0 +1,60 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">Smart Home</a>
+
+    <!-- Mobile Toggle Button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav flex-column flex-lg-row ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/device-list" routerLinkActive="active">Devices</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/scheduling" routerLinkActive="active">Scheduling</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/logs" routerLinkActive="active">Logs</a>
+        </li>
+
+        <!-- Authentication Links -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-danger text-white" routerLink="/login">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="device-details-container">
+    <h1>Device Details</h1>
+  
+    <div *ngIf="device" class="device-info">
+      <h2>{{ device.name }}</h2>
+      <p><strong>Room:</strong> {{ device.room }}</p>
+      <p><strong>Energy Usage:</strong> {{ device.energy }} W</p>
+      <p>
+        <strong>Status:</strong> 
+        <span [class.online]="device.status === 'ON'" [class.offline]="device.status === 'OFF'">
+          {{ device.status }}
+        </span>
+      </p>
+      
+      <button (click)="toggleStatus()">
+        {{ device.status === 'ON' ? 'Turn OFF' : 'Turn ON' }}
+      </button>
+      <button class="back-btn" (click)="goBack()">Back to Device List</button>
+    </div>
+  </div>
+  

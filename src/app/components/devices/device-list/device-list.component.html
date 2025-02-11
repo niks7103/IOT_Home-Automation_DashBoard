@@ -1,0 +1,88 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">Smart Home</a>
+
+    <!-- Mobile Toggle Button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav flex-column flex-lg-row ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/scheduling" routerLinkActive="active">Scheduling</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/logs" routerLinkActive="active">Logs</a>
+        </li>
+
+        <!-- Authentication Links -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-danger text-white" routerLink="/login">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="device-list-container">
+  <h1 class="device-list-title">Smart Home Devices</h1>
+
+  <!-- Device Search and Filter -->
+  <div class="device-filters">
+    <input type="text" placeholder="Search devices..." [(ngModel)]="searchTerm" (input)="filterDevices()">
+    
+    <select [(ngModel)]="selectedRoom" (change)="filterDevices()">
+      <option value="">All Rooms</option>
+      <option *ngFor="let room of availableRooms" [value]="room">{{ room }}</option>
+    </select>
+
+    <button (click)="sortDevices()">Sort by Status</button>
+  </div>
+
+  <!-- Device List (Grid View) -->
+  <div class="device-list">
+    <div class="device-card" *ngFor="let device of filteredDevices">
+      <h3>{{ device.name }}</h3>
+      <p>Room: {{ device.room }}</p>
+      <p>Status: 
+        <span [class.online]="device.status === 'ON'" [class.offline]="device.status === 'OFF'">
+          {{ device.status }}
+        </span>
+      </p>
+      <p>Energy Usage: {{ device.energy }} W</p>
+      <button (click)="toggleDevice(device)">
+        {{ device.status === 'ON' ? 'Turn OFF' : 'Turn ON' }}
+      </button>
+      <button class="delete-btn" (click)="removeDevice(device)">Remove</button>
+
+      <!-- View Details Button (Ensuring `device.id` exists) -->
+      <a [routerLink]="['/device', device.id]">View Details</a>
+    </div>
+  </div>
+
+  <!-- Add New Device Form -->
+  <div class="add-device-section">
+    <h2>Add New Device</h2>
+    <input type="text" placeholder="Device Name" [(ngModel)]="newDevice.name">
+    <input type="text" placeholder="Room" [(ngModel)]="newDevice.room">
+    <input type="number" placeholder="Energy Usage (W)" [(ngModel)]="newDevice.energy">
+    <button (click)="addDevice()">Add Device</button>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <div class="navigation">
+    <a routerLink="/dashboard">
+      <button class="dashboard-btn">Go to Dashboard</button>
+    </a>
+  </div>
+</div>
